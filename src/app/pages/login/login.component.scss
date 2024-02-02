@@ -1,0 +1,31 @@
+.body {
+    margin: 0;
+    padding: 0;
+    background-color: #f23f69; 
+    height: 100vh;
+  }
+  .login{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+    width:60%;
+    height: 320px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+  }
+ .form{
+  padding: 20px;
+ }
+ 
+  img{
+    position: absolute;
+    display: block;
+    z-index: 9 !important;
+    top: -70px;
+     
+    width: 100px;
+    height: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }

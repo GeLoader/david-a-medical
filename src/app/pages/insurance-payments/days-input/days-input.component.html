@@ -1,0 +1,16 @@
+<mat-icon style="cursor: pointer; color: #767e7b;float: right;margin-bottom: 1rem;"
+  (click)="closeDialog()">cancel</mat-icon>
+<h1 mat-dialog-title>Enter No. of Days</h1>
+<div mat-dialog-content>
+  <p>Get records that were posted the past # of days</p>
+
+  <mat-form-field>
+
+    <input matInput name="inputdays" [(ngModel)]="numberOfDays" type="number"/>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+
+  <button class="btn btn-success" (click)="onSubmit()">Ok</button>
+</div>

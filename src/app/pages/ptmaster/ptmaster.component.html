@@ -1,0 +1,78 @@
+
+
+<div fxLayout="column" fxLayoutAlign="space-around start">
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+ <div class="container">
+    <span class="header">Select PT View:</span>
+ 
+        <div class="listReports">
+            <mat-selection-list *ngFor="let val of listReports" [multiple]="false" >
+              <mat-list-option   >
+             {{ val.report_name }}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+         
+</div>
+<div class="container">
+<div class="vertical-buttons"> 
+<button mat-raised-button  fxFlex >RUN!</button>
+</div>
+</div>
+<!-- Container 2 with vertical buttons -->
+<div class="container">
+    <div class="vertical-buttons">
+        <button class="btn btn-success" fxFlex >Add New PT View</button>
+        <button class="btn btn-success" fxFlex >Edit Selected PT View</button>
+        <button class="btn btn-success" fxFlex >Delete Selected PT View</button>
+    </div>
+</div>
+
+<!-- Container 3 with vertical buttons -->
+<div class="container">
+    <div class="vertical-buttons">
+        <button class="btn btn-success" fxFlex >Upload Streak Files</button>
+        <button class="btn btn-success" fxFlex >View Deleted Record</button>
+
+    </div>
+</div>
+  </div>
+</div>
+
+ <!-- <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened> 
+        <span class="header">Select PT View:</span>
+ 
+        <div class="listReports">
+            <mat-selection-list *ngFor="let val of listReports" [multiple]="false" >
+              <mat-list-option   >
+             {{ val.report_name }}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+
+    </mat-drawer>
+
+    <mat-drawer mode="side" opened> 
+        <button class="btn btn-success" fxFlex >Add New PT View</button>
+        <button class="btn btn-success" fxFlex >Edit Selected PT View</button>
+        <button class="btn btn-success" fxFlex >Delete Selected PT View</button>
+    </mat-drawer>
+    <mat-drawer mode="side" opened> 
+        <button class="btn btn-success" fxFlex >Upload Streak Files</button>
+        <button class="btn btn-success" fxFlex >View Deleted Record</button>
+
+
+
+    </mat-drawer>
+
+  </mat-drawer-container>
+
+ 
+ 
+    <button class="btn btn-success" fxFlex >RUN</button>
+  -->
+
+ 
+
+

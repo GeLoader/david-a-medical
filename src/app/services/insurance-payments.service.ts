@@ -9,7 +9,7 @@ export class InsurancePaymentsService {
 
   message: string | undefined
   url = `${environment.apiBaseUrl}`;
-  server = environment.server;
+  
   table = 'insurance-payments';
   constructor(private http: HttpClient) { }
 
@@ -26,25 +26,5 @@ export class InsurancePaymentsService {
 
 
 
-  public post(data: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        authorization: `Bearer `,
-      }),
-    };
-    return this.http
-      .post(`${this.server}${this.table}`, data)
-      .pipe(map((response) => response as any));
-  }
-
-  public get() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        authorization: `Bearer `,
-      }),
-    };
-    return this.http
-      .get(`${this.server}${this.table}`)
-      .pipe(map((response) => response as any));
-  }
+  
 }

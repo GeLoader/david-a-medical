@@ -28,7 +28,7 @@ export class ManageSettingsComponent {
   }
 
   openSettings(val: any) {
-    console.log(val)
+    //console.log(val)
     if (val === '1') {
       this.router.navigate(['/item-partner']);
       this.matdialog.closeAll()

@@ -45,14 +45,12 @@ export class SuperiorpayoutsComponent implements OnInit {
   totalUnpaidAmt: number = 0;
   ngOnInit(): void {
     this.getSuperiorPayouts()
-    this.spinner.show()
-    setTimeout(() =>{
-      this.spinner.hide()
-    },3000)
+    
   }
 
 
   getSuperiorPayouts() {
+    this.spinner.show();
     this.partnerpayoutsService.getSuperiorPayouts().subscribe(
       (res: any) => {
        // console.log(res);
@@ -67,8 +65,8 @@ export class SuperiorpayoutsComponent implements OnInit {
         }
         this.spinner.hide();
       
-      }
-      )
+      } 
+      );
  
      
   }

@@ -40,14 +40,12 @@ export class HcpsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHCPCSMASTER()
-    this.spinner.show()
-    setTimeout(() =>{
-      this.spinner.hide()
-    },3000)
+   
   }
 
 
   getHCPCSMASTER() {
+    this.spinner.show()
     this.itemService.getHCPCSMASTER().subscribe(
       (res: any) => {
        // console.log(res);

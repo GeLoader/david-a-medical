@@ -50,22 +50,20 @@ export class ViewallComponent implements OnInit {
       
     });
 
-    let dataIndex = window.location.href.indexOf('?data');
+    // let dataIndex = window.location.href.indexOf('?data');
   
-    if (dataIndex !== -1) {
-      window.history.replaceState({}, document.title, window.location.href.substring(0, dataIndex));
-    }
+    // if (dataIndex !== -1) {
+    //   window.history.replaceState({}, document.title, window.location.href.substring(0, dataIndex));
+    // }
     //console.log(this.daysval);
     this.viewAllPayments();
-    this.spinner.show()
-    setTimeout(() => {
-      this.spinner.hide()
-    }, 3000)
+   
+    
   }
 
 
   viewAllPayments() {
-  
+    this.spinner.show()
     this.insurancepaymentsService.viewAllPayments(this.daysval).subscribe(
       (res: any) => {
          //console.log(res.data);
@@ -80,8 +78,8 @@ export class ViewallComponent implements OnInit {
         }
         this.spinner.hide();
 
-      }
-    )
+      } 
+      );
 
 
 

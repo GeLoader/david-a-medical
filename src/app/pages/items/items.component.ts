@@ -36,7 +36,7 @@ export class ItemsComponent {
 
 
   openItems(val: any) {
-    console.log(val)
+    //console.log(val)
     if (val === '1') {
       this.router.navigate(['/hcpsmaster']);
       this.matdialog.closeAll()

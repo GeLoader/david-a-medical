@@ -46,19 +46,18 @@ export class ColumnWidthComponent implements OnInit {
 
   ngOnInit(): void {
     this.getColumnWidth()
-    this.spinner.show()
-    setTimeout(() =>{
-      this.spinner.hide()
-    },3000)
+    
   }
 
 
   getColumnWidth() {
+    this.spinner.show();
     this.settingService.getColumnWidth().subscribe(
       (res: any) => {
        // console.log(res);
         if (res.data.length > 0) {
           this.tableArr = res.data;
+       
           this.dataSource = new MatTableDataSource(this.tableArr);
           // console.log(this.tableArr);
           this.dataSource.sort = this.sorts;

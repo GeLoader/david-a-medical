@@ -47,19 +47,18 @@ export class ItemPartnerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItemPartner()
-    this.spinner.show()
-    setTimeout(() =>{
-      this.spinner.hide()
-    },3000)
+   
   }
 
 
   getItemPartner() {
+    this.spinner.show();
     this.settingService.getItemPartner().subscribe(
       (res: any) => {
        // console.log(res);
         if (res.data.length > 0) {
           this.tableArr = res.data;
+         
           this.dataSource = new MatTableDataSource(this.tableArr);
           // console.log(this.tableArr);
           this.dataSource.sort = this.sorts;

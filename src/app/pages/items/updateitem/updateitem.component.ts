@@ -46,14 +46,12 @@ export class UpdateitemComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItemMaster()
-    this.spinner.show()
-    setTimeout(() =>{
-      this.spinner.hide()
-    },3000)
+ 
   }
 
 
   getItemMaster() {
+    this.spinner.show()
     this.itemService.getItemMaster().subscribe(
       (res: any) => {
        // console.log(res);

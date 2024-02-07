@@ -49,21 +49,20 @@ export class ClaimResolutionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getClosedFlags()
-    this.spinner.show()
-    setTimeout(() =>{
-      this.spinner.hide()
-    },3000)
+    
   }
 
 
   getClosedFlags() {
+    this.spinner.show();
     this.settingService.getClosedFlags().subscribe(
       (res: any) => {
        // console.log(res);
         if (res.data.length > 0) {
+         
           this.tableArr = res.data;
           this.dataSource = new MatTableDataSource(this.tableArr);
-          console.log(this.tableArr);
+          //console.log(this.tableArr);
           this.dataSource.sort = this.sorts;
           this.dataSource.paginator = this.paginator;
         } else {

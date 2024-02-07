@@ -42,14 +42,12 @@ export class UnpaidAdvancecareComponent implements OnInit {
   totalUnpaidAmt: number = 0;
   ngOnInit(): void {
     this.getUnpaidAdvancecare()
-    this.spinner.show()
-    setTimeout(() =>{
-      this.spinner.hide()
-    },3000)
+   
   }
 
 
   getUnpaidAdvancecare() {
+    this.spinner.show()
     this.partnerpayoutsService.getUnpaidAdvancecare().subscribe(
       (res: any) => {
        // console.log(res);
@@ -64,8 +62,8 @@ export class UnpaidAdvancecareComponent implements OnInit {
         }
         this.spinner.hide();
       
-      }
-      )
+      } 
+      );
 
       this.partnerpayoutsService.getsp_advanced_payouts_total().subscribe(
         (res: any) => {

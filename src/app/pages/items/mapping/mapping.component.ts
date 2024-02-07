@@ -46,14 +46,12 @@ export class MappingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItemMapping()
-    this.spinner.show()
-    setTimeout(() =>{
-      this.spinner.hide()
-    },3000)
+   
   }
 
 
   getItemMapping() {
+    this.spinner.show()
     this.itemService.getItemMapping().subscribe(
       (res: any) => {
        // console.log(res);

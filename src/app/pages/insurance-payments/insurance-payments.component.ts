@@ -47,7 +47,7 @@ viewAllPayments() {
 }
 
 openInsurancePayments(val: any) {
-  console.log(val)
+  //console.log(val)
   if (val === '1') {
     this.router.navigate(['/uploadpayment']);
     this.matdialog.closeAll()

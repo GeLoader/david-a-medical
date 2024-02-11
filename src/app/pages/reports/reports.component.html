@@ -1,41 +1,41 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h3>Reports</h3>
-        </div>
+
+<div fxLayout="column" fxLayoutAlign="space-around start">
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+   <div class="container">
+    <form [formGroup]="formData">
+      <span class="header">Select Report:</span>
+   
+          <div class="listReports">
+              <mat-selection-list #val [multiple]="false" formControlName="report_val">
+                <mat-list-option  *ngFor="let val of listReports" [value]="val"  >
+               {{ val }}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+    </form>
+  </div>
+  <div class="container">
+  <div class="vertical-buttons"> 
+  <button mat-raised-button (click)="runReport()" fxFlex >RUN!</button>
+  </div>
+  </div>
+  <!-- Container 2 with vertical buttons -->
+  <div class="container">
+      <div class="vertical-buttons">
+          <button class="btn btn-success" fxFlex >Add New Report</button>
+          <button class="btn btn-success" fxFlex >Edit Selected Report</button>
+          <button class="btn btn-success" fxFlex >Delete Selected Report</button>
+      </div>
+  </div>
+  
+  <!-- Container 3 with vertical buttons -->
+  <div class="container">
+      <div class="vertical-buttons">
+          <button class="btn btn-success" (click)= "unpaidAging()" fxFlex >Unpaid Aging Report</button>
+          <button class="btn btn-success" fxFlex >Superior Payouts Report</button>
+          <button class="btn btn-success" fxFlex >Denied Items</button>
+  
+      </div>
+  </div>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <label>From</label>
-          <input type="text"
-                 placeholder="Datepicker"
-                 class="form-control"
-                 bsDatepicker>
-        </div>
-        <div class="col-6">
-            <label>To:</label>
-            <input type="text"
-            placeholder="Datepicker"
-            class="form-control"
-            bsDatepicker>
-        </div>
-      </div>
-
-      <div class="row" style="margin-top: 10px;">
-        <div class="col">
-            <select class="form-control">
-                <option>Report type 1</option>
-                <option>Report type 2</option>
-                <option>Report type 3</option>
-                <option>Report type 4   </option>
-            </select>
-        </div>
-        
-
-      </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col">
-            <button class="btn btn-primary">View Report</button>
-        </div>
-      </div>
-</div>
+  </div>

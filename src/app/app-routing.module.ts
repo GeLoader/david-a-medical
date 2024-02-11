@@ -44,6 +44,8 @@ import { ClaimResolutionComponent } from './pages/settings/claim-resolution/clai
 import { InsuranceCompanyComponent } from './pages/settings/insurance-company/insurance-company.component';
 import { UnpaidAdvancecareComponent } from './pages/partner-payouts/unpaid-advancecare/unpaid-advancecare.component';
 import { AdvancecarePayoutsComponent } from './pages/partner-payouts/advancecare-payouts/advancecare-payouts.component';
+import { BuildreportComponent } from './pages/reports/buildreport/buildreport.component';
+import { UnpaidAgingComponent } from './pages/reports/unpaid-aging/unpaid-aging.component';
 
 const routes: Routes = [
 
@@ -51,7 +53,28 @@ const routes: Routes = [
     path: loginroute.base,
     component: LoginComponent,
   },
-
+//ITEMS
+{ path: 'hcpsmaster', component: HcpsComponent },
+{ path: 'itemmaster', component: UpdateitemComponent },
+{ path: 'mappingitem', component: MappingComponent },
+//REPORTS
+{ path: 'buildreport', component: BuildreportComponent },
+{ path: 'unpaid-aging', component: UnpaidAgingComponent },
+  //INSURANCE PAYMENTS
+  { path: 'uploadpayment', component: UploadpaymentComponent },
+  { path: 'viewallpayment', component: ViewallComponent },
+  { path: 'convertedi', component: ViewallComponent },
+  { path: 'averagepayments', component: AveragePaymentsComponent },
+//Payouts-partner
+{ path: 'unpaid-superior', component: UnpaidsuperiorComponent },
+{ path: 'superior-payouts', component: SuperiorpayoutsComponent },
+{ path: 'unpaid-advancecare', component: UnpaidAdvancecareComponent },
+{ path: 'advancecare-payouts', component: AdvancecarePayoutsComponent },
+//SETTINGS
+{ path: 'item-partner', component: ItemPartnerComponent },
+{ path: 'column-width', component: ColumnWidthComponent },
+{ path: 'claim-resolution', component: ClaimResolutionComponent },
+{ path: 'insurance-company', component: InsuranceCompanyComponent },
   {
     path: homeroute.base,
     component: HomeComponent,
@@ -174,25 +197,7 @@ const routes: Routes = [
     redirectTo: loginroute.base,
     pathMatch: 'full',
   },
-  //ITEMS
-  { path: 'hcpsmaster', component: HcpsComponent },
-  { path: 'itemmaster', component: UpdateitemComponent },
-  { path: 'mappingitem', component: MappingComponent },
-    //INSURANCE PAYMENTS
-    { path: 'uploadpayment', component: UploadpaymentComponent },
-    { path: 'viewallpayment', component: ViewallComponent },
-    { path: 'convertedi', component: ViewallComponent },
-    { path: 'averagepayments', component: AveragePaymentsComponent },
-  //Payouts-partner
-  { path: 'unpaid-superior', component: UnpaidsuperiorComponent },
-  { path: 'superior-payouts', component: SuperiorpayoutsComponent },
-  { path: 'unpaid-advancecare', component: UnpaidAdvancecareComponent },
-  { path: 'advancecare-payouts', component: AdvancecarePayoutsComponent },
-//SETTINGS
-  { path: 'item-partner', component: ItemPartnerComponent },
-  { path: 'column-width', component: ColumnWidthComponent },
-  { path: 'claim-resolution', component: ClaimResolutionComponent },
-  { path: 'insurance-company', component: InsuranceCompanyComponent },
+  
 ];
 
 @NgModule({

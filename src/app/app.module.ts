@@ -26,7 +26,7 @@ import { UnpaidsuperiorComponent } from './pages/partner-payouts/unpaidsuperior/
 import { SuperiorpayoutsComponent } from './pages/partner-payouts/superiorpayouts/superiorpayouts.component';
 import { EditptComponent } from './pages/ptmaster/editpt/editpt.component';
 import { PtComponent } from './pages/ptmaster/pt/pt.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule  } from '@angular/forms';
 import { AveragePaymentsComponent } from './pages/insurance-payments/average-payments/average-payments/average-payments.component';
 import { ViewallComponent } from './pages/insurance-payments/viewall/viewall/viewall.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -39,6 +39,8 @@ import { InsuranceCompanyComponent } from './pages/settings/insurance-company/in
 import { UnpaidAdvancecareComponent } from './pages/partner-payouts/unpaid-advancecare/unpaid-advancecare.component';
 import { AdvancecarePayoutsComponent } from './pages/partner-payouts/advancecare-payouts/advancecare-payouts.component';
 import { DaysInputComponent } from './pages/insurance-payments/days-input/days-input.component';
+import { BuildreportComponent } from './pages/reports/buildreport/buildreport.component';
+import { UnpaidAgingComponent } from './pages/reports/unpaid-aging/unpaid-aging.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +72,8 @@ import { DaysInputComponent } from './pages/insurance-payments/days-input/days-i
     UnpaidAdvancecareComponent,
     AdvancecarePayoutsComponent,
     DaysInputComponent,
+    BuildreportComponent,
+    UnpaidAgingComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +86,7 @@ import { DaysInputComponent } from './pages/insurance-payments/days-input/days-i
     TableModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     BsDatepickerModule.forRoot()
   ],
   providers: [],

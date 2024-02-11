@@ -15,6 +15,7 @@ import { PartnerPayoutsComponent } from 'src/app/pages/partner-payouts/partner-p
 import { PtComponent } from 'src/app/pages/ptmaster/pt/pt.component';
 import { PtmasterComponent } from 'src/app/pages/ptmaster/ptmaster.component';
 import { InsurancePaymentsComponent } from 'src/app/pages/insurance-payments/insurance-payments.component';
+import { ReportsComponent } from 'src/app/pages/reports/reports.component';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -40,6 +41,10 @@ export class MenuComponent {
     this.router.navigate([`${homeroute.base}/${link}`])
     
   }
+
+  openReportsDialog() {
+    this.openDialog.open(ReportsComponent)
+ }
 
   openPTDialog() {
     this.openDialog.open(PtmasterComponent)

@@ -42,25 +42,31 @@ export class PtmasterComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListReports();
-   
     
-
- 
   }
 
   listReports: any = [];
-
+  reportsArray: any = [];
   getListReports() {
     this.ptService.getListReports().subscribe(
       (res: any) => {
-       // console.log(res.data);
+    //console.log(res.data);
         this.listReports = res.data;
+        this.listReports = [
+          ...new Set(res.data.map((x: any) => x['report_name'])),
+        ];
+
+       
  
       }
     )
   }
 
   
+  selectData(val: any) {
+    //console.log(val[0])
 
+
+  }
  
 }

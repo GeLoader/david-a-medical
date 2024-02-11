@@ -6,9 +6,9 @@
     <span class="header">Select PT View:</span>
  
         <div class="listReports">
-            <mat-selection-list *ngFor="let val of listReports" [multiple]="false" >
-              <mat-list-option   >
-             {{ val.report_name }}
+            <mat-selection-list #val (click)="selectData(val._value)"  [multiple]="false" >
+              <mat-list-option  *ngFor="let val of listReports" [value]="val"  >
+             {{ val }}
               </mat-list-option>
             </mat-selection-list>
           </div>

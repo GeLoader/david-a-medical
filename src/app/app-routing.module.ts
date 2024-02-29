@@ -46,6 +46,7 @@ import { UnpaidAdvancecareComponent } from './pages/partner-payouts/unpaid-advan
 import { AdvancecarePayoutsComponent } from './pages/partner-payouts/advancecare-payouts/advancecare-payouts.component';
 import { BuildreportComponent } from './pages/reports/buildreport/buildreport.component';
 import { UnpaidAgingComponent } from './pages/reports/unpaid-aging/unpaid-aging.component';
+import { DeniedItemsComponent } from './pages/reports/denied-items/denied-items.component';
 
 const routes: Routes = [
 
@@ -53,6 +54,8 @@ const routes: Routes = [
     path: loginroute.base,
     component: LoginComponent,
   },
+  //PT
+{ path: 'pt', component: PtComponent },
 //ITEMS
 { path: 'hcpsmaster', component: HcpsComponent },
 { path: 'itemmaster', component: UpdateitemComponent },
@@ -60,6 +63,7 @@ const routes: Routes = [
 //REPORTS
 { path: 'buildreport', component: BuildreportComponent },
 { path: 'unpaid-aging', component: UnpaidAgingComponent },
+{ path: 'denied-items', component: DeniedItemsComponent },
   //INSURANCE PAYMENTS
   { path: 'uploadpayment', component: UploadpaymentComponent },
   { path: 'viewallpayment', component: ViewallComponent },

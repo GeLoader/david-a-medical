@@ -12,6 +12,7 @@ import { MenuService } from 'src/app/services/menu/menu.service';
 import { InsurancePaymentsService } from 'src/app/services/insurance-payments.service';
 import { PtService } from 'src/app/services/pt.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { UntypedFormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-ptmaster',
   templateUrl: './ptmaster.component.html',
@@ -22,6 +23,8 @@ export class PtmasterComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private router: Router,
     public matdialog: MatDialog,
+    public dialogRef: MatDialogRef<PtmasterComponent>,
+    private fb: UntypedFormBuilder,
     private menu: MenuService,
     private ptService: PtService,
     private alertService: AlertService,
@@ -29,16 +32,9 @@ export class PtmasterComponent implements OnInit {
      
   }
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sorts!: MatSort;
-  
- 
-  tableArr: any = [];
- 
-  dataSource: any = new MatTableDataSource(this.tableArr);
-  search_word: any = '';
-  filterSearch: string = ''
-
+  formData = this.fb.group({
+    report_val: [''],
+  });
 
   ngOnInit(): void {
     this.getListReports();
@@ -62,11 +58,23 @@ export class PtmasterComponent implements OnInit {
     )
   }
 
-  
-  selectData(val: any) {
-    //console.log(val[0])
+  async runReport() {
+    let pt_type = this.formData.value.report_val;
+    if(pt_type.length > 0 ) {
 
+     await this.router.navigate(['/pt'], {
+       queryParams: { data: JSON.stringify(pt_type) },
+     });
+     this.dialogRef.close();
 
-  }
+     
+     window.location.reload()
+
+    }else{
+     this.alertService.onError('Please select report');
+    }
+ }
+
+ 
  
 }

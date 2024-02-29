@@ -18,6 +18,18 @@ export class InsurancePaymentsService {
     return this.http.get(`${this.url}/insurancepayments/get-AllPayments/${num}`)
   }
 
+  viewAveragePayments() {
+    return this.http.get(`${this.url}/insurancepayments/get-avgpayments`)
+  }
+
+  count_ins_payments() {
+    return this.http.get(`${this.url}/insurancepayments/get-countpayments`)
+  }
+
+  post_tbl_ins_payment_stg(data: any) {
+    return this.http.post(`${this.url}/insurancepayments/post-ins_payment_stg`, data);
+  }
+
 
 
 

@@ -41,6 +41,7 @@ import { AdvancecarePayoutsComponent } from './pages/partner-payouts/advancecare
 import { DaysInputComponent } from './pages/insurance-payments/days-input/days-input.component';
 import { BuildreportComponent } from './pages/reports/buildreport/buildreport.component';
 import { UnpaidAgingComponent } from './pages/reports/unpaid-aging/unpaid-aging.component';
+import { DeniedItemsComponent } from './pages/reports/denied-items/denied-items.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +75,7 @@ import { UnpaidAgingComponent } from './pages/reports/unpaid-aging/unpaid-aging.
     DaysInputComponent,
     BuildreportComponent,
     UnpaidAgingComponent,
+    DeniedItemsComponent,
   ],
   imports: [
     BrowserModule,

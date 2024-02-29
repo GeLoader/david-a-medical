@@ -6,25 +6,27 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import * as _ from 'lodash';
 import { sort as sorter } from 'fast-sort';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MenuService } from 'src/app/services/menu/menu.service';
 
 import { PartnerPayoutsService } from 'src/app/services/partner-payouts.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { ReportsService } from 'src/app/services/reports.service';
 
 @Component({
-  selector: 'app-superiorpayouts',
-  templateUrl: './superiorpayouts.component.html',
-  styleUrls: ['./superiorpayouts.component.scss']
+  selector: 'app-denied-items',
+  templateUrl: './denied-items.component.html',
+  styleUrls: ['./denied-items.component.scss']
 })
-export class SuperiorpayoutsComponent implements OnInit {
+export class DeniedItemsComponent implements OnInit {
   constructor( 
     private spinner: NgxSpinnerService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     public matdialog: MatDialog,
     private menu: MenuService,
-    private partnerpayoutsService: PartnerPayoutsService,
+    private reportsService: ReportsService,
     private alertService: AlertService,){
      
   }
@@ -34,42 +36,58 @@ export class SuperiorpayoutsComponent implements OnInit {
   
  
   tableArr: any = [];
-  displayedColumns: string[] = ['edit','delete','ROW NUMBER', 'Payout Date', 'Payment Amount','ORDER DATE','QUANTITY',
-                          'ITEM','DATE OF SERVICE','LAST NAME','FIRST NAME','SO #','BILL #','AUTH NEEDED',
-                          'INSURANCE','INSURANCE ID','NOTES','DATE BILLED','SOFTWARE','SYS Payment Rcvd','Last Auto Update',
-                          'DOCUSIGN SENT','A Med Fee','PAID TO SUPERIOR','CLAIM NUMBER','RECOUPED BALANCE','REISSUED PAYMENT',
-                          'FEE SCHEDULE','email','Payment Status'];
+  displayedColumns: string[] = [];
   dataSource: any = new MatTableDataSource(this.tableArr);
   search_word: any = '';
   filterSearch: string = ''
   totalUnpaidAmt: number = 0;
+
+
+
   ngOnInit(): void {
     this.spinner.show();
-    this.getSuperiorPayouts()
+    
+    this.getDeniedItemsReport();
     
   }
 
-
-  getSuperiorPayouts() {
- 
-    this.partnerpayoutsService.getSuperiorPayouts().subscribe(
+  rprVal: any;
+  numRows: any;
+   
+  getDeniedItemsReport() {
+      this.reportsService.getDeniedItems().subscribe(
       (res: any) => {
-       // console.log(res);
-        if (res.data.length > 0) {
+        //this.displayedColumns = res.data[0];
+        if(res.data.length > 0){
+
+          this.displayedColumns = Object.keys(res.data[0]);
+
           this.tableArr = res.data;
+          this.numRows = this.tableArr.length;
           this.dataSource = new MatTableDataSource(this.tableArr);
-           //console.log(this.tableArr);
           this.dataSource.sort = this.sorts;
           this.dataSource.paginator = this.paginator;
-        } else {
-          this.alertService.onError(res.message);
+
+          this.applyFilter();
+          this.spinner.hide();
+           
+   
         }
-        this.spinner.hide();
       
-      } 
-      );
- 
+      }
+    )
      
+  }
+
+  applyFilter() {
+    const filterValue = this.search_word;
+
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }

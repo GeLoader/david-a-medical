@@ -22,6 +22,10 @@ export class ReportsService {
     return this.http.get(`${this.url}/reports/get-unpaidaging`);
  }
 
+ getDeniedItems() {
+  return this.http.get(`${this.url}/reports/get-denieditems`);
+}
+
  
 
 }

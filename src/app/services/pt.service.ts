@@ -14,7 +14,9 @@ export class PtService {
     return this.http.get(`${this.url}/pt/get-reports`);
   }
 
-
+  viewPTreport(pt_type: any){
+    return this.http.get(`${this.url}/pt/get-pt/${pt_type}`)
+  }
 
 
 

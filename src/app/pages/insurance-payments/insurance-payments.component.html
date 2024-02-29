@@ -2,12 +2,13 @@
   (click)="closeDialog()">cancel</mat-icon>
 
 <div class="container">
+  <input type="file" class="file-upload" (change)="onFileSelected($event)">
   <div class="col action-wrapper">
 
     <!-- <button class="btn btn-warning" (click)="openunpaidsuperrior()">Unpaid Superior</button>
         <button class="btn btn-warning" (click)="opensuperior()">Superior Payouts</button> -->
 
- 
+
     <button mat-raised-button (click)="openInsurancePayments('1')">
       Upload Payment File 
     </button>

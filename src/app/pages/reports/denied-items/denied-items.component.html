@@ -1,14 +1,18 @@
 <app-menu></app-menu>
+
 <div class="maindiv">
+    <h1>Denied Items: Report</h1>
+    
+    <mat-form-field appearance="outline" style="width: 25rem">
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter()" [(ngModel)]="search_word" placeholder="Search here" autocomplete="off"
+          #input />
+      </mat-form-field>
+
+
  
-    <div class="row">
-        <div class="col-12">
-            <h1>{{ rprVal }}</h1>
-        </div>
-    </div>
-
-
     <div class="mat-elevation-z8">
+        <h3 *ngIf="numRows" ><b>Total Record(s): {{ numRows | number: '':'en-US' }}</b></h3>
           <!-- <table mat-table [dataSource]="dataSource" matSort> -->
         <table mat-table [dataSource]="dataSource"  matSort>
  
@@ -16,14 +20,7 @@
                 <th mat-header-cell *matHeaderCellDef > {{col}} </th>
                 <td mat-cell *matCellDef="let element"> {{element[col]}} </td>
               </ng-container>
-              
-              <!-- <ng-container matColumnDef="Payment Amount">
-                <th mat-header-cell *matHeaderCellDef>Payment Amount</th>
-                <td mat-cell *matCellDef="let element">
-                    {{ element['Payment Amount'] }}
-                </td>
-            </ng-container> -->
-
+         
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns">
 
@@ -36,5 +33,8 @@
     </div>
 
 
- 
+
+
+
+
 </div>

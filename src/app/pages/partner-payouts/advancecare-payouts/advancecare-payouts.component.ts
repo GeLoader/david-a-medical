@@ -41,13 +41,14 @@ export class AdvancecarePayoutsComponent implements OnInit {
   filterSearch: string = ''
   totalUnpaidAmt: number = 0;
   ngOnInit(): void {
+    this.spinner.show();
     this.getAdvancecarePayouts()
     
   }
 
 
   getAdvancecarePayouts() {
-    this.spinner.show();
+  
     this.partnerpayoutsService.getAdvancecarePayouts().subscribe(
       (res: any) => {
        // console.log(res);

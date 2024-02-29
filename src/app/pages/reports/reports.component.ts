@@ -81,5 +81,12 @@ export class ReportsComponent {
     this.dialogRef.close();
   
   }
+
+  deniedItems() {
+
+    this.router.navigate(['/denied-items']);
+    this.dialogRef.close();
+  
+  }
  
 }

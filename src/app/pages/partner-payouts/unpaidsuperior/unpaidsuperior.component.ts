@@ -41,6 +41,7 @@ export class UnpaidsuperiorComponent implements OnInit {
   filterSearch: string = ''
   totalUnpaidAmt: number = 0;
   ngOnInit(): void {
+    this.spinner.show()
     this.getUnpaidSuperior()
    
     
@@ -48,7 +49,7 @@ export class UnpaidsuperiorComponent implements OnInit {
 
 
   getUnpaidSuperior() {
-    this.spinner.show()
+   
     this.partnerpayoutsService.getUnpaidSuperior().subscribe(
       (res: any) => {
        // console.log(res);
@@ -58,23 +59,26 @@ export class UnpaidsuperiorComponent implements OnInit {
            //console.log(this.tableArr);
           this.dataSource.sort = this.sorts;
           this.dataSource.paginator = this.paginator;
+
+          this.partnerpayoutsService.getsp_superior_payouts_total().subscribe(
+            (res: any) => {
+              if (res.data.length > 0) {
+                //console.log(res.data[0])
+                this.totalUnpaidAmt = res.data[0].Total;
+              } 
+            }
+          );
+
         } else {
           this.alertService.onError(res.message);
         }
-        this.spinner.hide();
       
+        this.spinner.hide();
       } 
       );
 
-      this.partnerpayoutsService.getsp_superior_payouts_total().subscribe(
-        (res: any) => {
-          if (res.data.length > 0) {
-            //console.log(res.data[0])
-            this.totalUnpaidAmt = res.data[0].Total;
-          } 
-        }
-      )
      
+      
   }
  
 }

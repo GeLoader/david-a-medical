@@ -1,4 +1,4 @@
-import { Component,OnInit, } from '@angular/core';
+import { Component,ElementRef,OnInit, ViewChild, } from '@angular/core';
 import { Company, data } from '../../../assets/data';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -13,6 +13,9 @@ import { averagepaymentsroute } from './average-payments/average-payments/averag
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AlertService } from 'src/app/services/alert.service';
  import { DaysInputComponent } from './days-input/days-input.component';
+import { HttpClient } from '@angular/common/http';
+import * as XLSX from 'xlsx';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-insurance-payments',
   templateUrl: './insurance-payments.component.html',
@@ -25,10 +28,17 @@ export class InsurancePaymentsComponent {
     private menu: MenuService, 
     public matdialog: MatDialog,
     public dialogRef: MatDialogRef<any>,
-    private alertService: AlertService,){
+    private alertService: AlertService,
+    private fb: UntypedFormBuilder,
+    ){
     
     
   }
+  formdata = this.fb.group({
+    sql: [],
+   // Customer_Address: [''],
+    //Email_Address: [''],
+  });
 
   ngOnInit(): void {
     //this.viewAllPayments()
@@ -36,7 +46,105 @@ export class InsurancePaymentsComponent {
     // setTimeout(() =>{
     //   this.spinner.hide()
     // },3000)
+ 
+   
   }
+ 
+  onFileSelected(event: any) {
+    if (!event || !event.target) {
+      console.log('Error: Event or event target is null.');
+      return;
+    }
+    
+    const selectedFile = event.target.files[0];
+    let workbookName = selectedFile.name;
+    if (selectedFile) {
+      if (selectedFile.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+        const fileReader = new FileReader();
+        fileReader.onload = (e) => {
+          if (!e || !e.target || !e.target.result) {
+            console.log('Error: FileReader result is null.');
+            return;
+          }
+          
+          const data = new Uint8Array(e.target.result as ArrayBuffer);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          const headerRow = XLSX.utils.sheet_to_json(worksheet, { header: 1 })[0] as string[];
+         
+          const rowIndex = 1;
+          const range = XLSX.utils.encode_row(rowIndex);
+          const row = XLSX.utils.sheet_to_json(worksheet, { range: range })[0];
+          
+          console.log('Row data:', row);
+
+          console.log('All column headers:', headerRow);
+          if(headerRow.indexOf('Check/EFT No') !== -1) {
+            //this.EDI(headerRow );
+            const cProviderClaimID = headerRow.indexOf("Patient Control #");
+            const cPayerCtrl = headerRow.indexOf("Payer Ctrl #");
+            const citem = headerRow.indexOf("HCPCS");
+            const tdate = headerRow.indexOf("Chk Date");
+            const cpaid = headerRow.indexOf("Ln Paid");
+            const svdt = headerRow.indexOf("Svc Start");
+            const nm = headerRow.indexOf("Patient Name");
+        
+            this.insurancepaymentsService.count_ins_payments().subscribe(
+              (res: any) => {
+                if(res.data.length > 0){
+                  let cnt = res.data[0].cnt;
+                  console.log(cnt);
+                }
+              }
+            )
+         
+          
+            let cnt = 0;
+            let sq = "";
+            let rawData = this.formdata.value;
+          }
+         
+        };
+        fileReader.readAsArrayBuffer(selectedFile);
+      } else {
+       
+        this.alertService.onError('Invalid file')
+      }
+    }
+  }
+
+  EDI(headerRow: string[] ) {
+ 
+  const checkEFTNoIndex = headerRow.indexOf("Check/EFT No");
+  if (checkEFTNoIndex !== -1) {
+ 
+    const cProviderClaimID = headerRow.indexOf("Patient Control #");
+    const cPayerCtrl = headerRow.indexOf("Payer Ctrl #");
+    const citem = headerRow.indexOf("HCPCS");
+    const tdate = headerRow.indexOf("Chk Date");
+    const cpaid = headerRow.indexOf("Ln Paid");
+    const svdt = headerRow.indexOf("Svc Start");
+    const nm = headerRow.indexOf("Patient Name");
+
+    this.insurancepaymentsService.count_ins_payments().subscribe(
+      (res: any) => {
+        if(res.data.length > 0){
+          let cnt = res.data[0].cnt;
+          console.log(cnt);
+        }
+      }
+    )
+ 
+  
+    let cnt = 0;
+    let sq = "";
+    let rawData = this.formdata.value;
+  
+  } else {
+    console.log('Column "Check/EFT No" not found.');
+  }
+}
 
 viewAllPayments() {
   this.insurancepaymentsService.viewAllPayments('5').subscribe(
@@ -45,6 +153,7 @@ viewAllPayments() {
     }
   );
 }
+ 
 
 openInsurancePayments(val: any) {
   //console.log(val)

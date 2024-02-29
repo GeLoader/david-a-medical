@@ -41,13 +41,14 @@ export class UnpaidAdvancecareComponent implements OnInit {
   filterSearch: string = ''
   totalUnpaidAmt: number = 0;
   ngOnInit(): void {
+    this.spinner.show()
     this.getUnpaidAdvancecare()
    
   }
 
 
   getUnpaidAdvancecare() {
-    this.spinner.show()
+
     this.partnerpayoutsService.getUnpaidAdvancecare().subscribe(
       (res: any) => {
        // console.log(res);
@@ -57,22 +58,25 @@ export class UnpaidAdvancecareComponent implements OnInit {
            //console.log(this.tableArr);
           this.dataSource.sort = this.sorts;
           this.dataSource.paginator = this.paginator;
+
+          this.partnerpayoutsService.getsp_advanced_payouts_total().subscribe(
+            (res: any) => {
+              if (res.data.length > 0) {
+                //console.log(res.data[0])
+                this.totalUnpaidAmt = res.data[0]['Payment to Advanced'];
+              } 
+            }
+          );
+
         } else {
           this.alertService.onError(res.message);
         }
+     
         this.spinner.hide();
-      
       } 
       );
 
-      this.partnerpayoutsService.getsp_advanced_payouts_total().subscribe(
-        (res: any) => {
-          if (res.data.length > 0) {
-            //console.log(res.data[0])
-            this.totalUnpaidAmt = res.data[0]['Payment to Advanced'];
-          } 
-        }
-      )
      
+  
   }
 }

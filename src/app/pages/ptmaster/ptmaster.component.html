@@ -3,20 +3,22 @@
 <div fxLayout="column" fxLayoutAlign="space-around start">
   <div fxLayout="row" fxLayoutAlign="space-around center">
  <div class="container">
+  <form [formGroup]="formData">
     <span class="header">Select PT View:</span>
  
         <div class="listReports">
-            <mat-selection-list #val (click)="selectData(val._value)"  [multiple]="false" >
+            <mat-selection-list #val [multiple]="false" formControlName="report_val">
               <mat-list-option  *ngFor="let val of listReports" [value]="val"  >
              {{ val }}
               </mat-list-option>
             </mat-selection-list>
           </div>
+  </form>
          
 </div>
 <div class="container">
 <div class="vertical-buttons"> 
-<button mat-raised-button  fxFlex >RUN!</button>
+<button mat-raised-button (click)="runReport()" fxFlex >RUN!</button>
 </div>
 </div>
 <!-- Container 2 with vertical buttons -->

@@ -1,0 +1,143 @@
+<app-menu></app-menu>
+<div class="maindiv">
+  <div class="row">
+    <div class="col-12">
+      <h1>View all payments</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="columns mt-2">
+        <div class="column col-12">
+          <button style="float: right;" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Upload
+            Payment File </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="Line Number">
+        <th mat-header-cell *matHeaderCellDef>Line Number</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Line Number'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Claim Id">
+        <th mat-header-cell *matHeaderCellDef>Claim Id</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Claim Id'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Provider Claim Id">
+        <th mat-header-cell *matHeaderCellDef>Provider Claim Id</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Provider Claim Id'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Sales Order">
+        <th mat-header-cell *matHeaderCellDef>Sales Order</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Sales Order'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="File HCPCS">
+        <th mat-header-cell *matHeaderCellDef>File HCPCS</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['File HCPCS'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="HCPCS">
+        <th mat-header-cell *matHeaderCellDef>HCPCS</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['HCPCS'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Service Date">
+        <th mat-header-cell *matHeaderCellDef>Service Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Service Date'] | date: 'MM/dd/yyyy' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Payment Date">
+        <th mat-header-cell *matHeaderCellDef>Payment Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Payment Date'] | date: 'MM/dd/yyyy' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="AdvancedCare">
+        <th mat-header-cell *matHeaderCellDef>AdvancedCare</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['AdvancedCare'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Paid Amount">
+        <th mat-header-cell *matHeaderCellDef>Paid Amount</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Paid Amount'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="File Name">
+        <th mat-header-cell *matHeaderCellDef>File Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['File Name'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Record Date">
+        <th mat-header-cell *matHeaderCellDef>Record Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Record Date'] | date: 'MM/dd/yyyy' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="User Inserted">
+        <th mat-header-cell *matHeaderCellDef>User Inserted</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['User Inserted'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Patient Full Name">
+        <th mat-header-cell *matHeaderCellDef>Patient Full Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['Patient Full Name'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['name'] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="in PT">
+        <th mat-header-cell *matHeaderCellDef>in PT</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element['in PT'] }}
+        </td>
+      </ng-container>
+ 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns">
+
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[20, 40, 50, 100, 500]" showFirstLastButtons
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>

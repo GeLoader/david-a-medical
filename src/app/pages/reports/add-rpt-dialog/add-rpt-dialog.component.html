@@ -1,0 +1,16 @@
+<div style="width: 250px;">
+    <mat-icon style="cursor: pointer; color: #767e7b;float: right;margin-bottom: 1rem;"
+      (click)="closeDialog()">cancel</mat-icon>
+    <h1 mat-dialog-title>Add new report.</h1>
+    <form [formGroup]="formdata"> 
+      <mat-form-field appearance="outline" style="width: 250px;">
+        <mat-label>Report name</mat-label>
+        <input matInput name="inputreport"   type="text" placeholder="Report name" formControlName="inputreport"/>
+      </mat-form-field>
+    </form>
+    <div mat-dialog-actions>
+    
+      <button class="btn btn-success" (click)="onSubmit()">Ok</button>
+    </div>
+    
+    </div>

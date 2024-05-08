@@ -1,0 +1,35 @@
+<mat-icon style="cursor: pointer; color: #767e7b;float: right;margin-bottom: 1rem;"
+  (click)="closeDialog()">cancel</mat-icon>
+
+<div class="container">
+  <div class="col action-wrapper">
+
+    <!-- <button class="btn btn-warning" (click)="openunpaidsuperrior()">Unpaid Superior</button>
+        <button class="btn btn-warning" (click)="opensuperior()">Superior Payouts</button> -->
+
+    <h2>Superior:</h2>
+    <button mat-raised-button (click)="openPayoutsDialog('1')">
+      Unpaid Superior
+    </button>
+
+    <button mat-raised-button (click)="openPayoutsDialog('2')">
+      Superior Payouts
+    </button>
+
+    <div style="padding: 16px"> </div>
+      <mat-divider></mat-divider>
+   
+    <h2>Advanced Care:</h2>
+    <button mat-raised-button (click)="openPayoutsDialog('3')">
+      Unpaid AdvancedCare
+    </button>
+
+    <button mat-raised-button (click)="openPayoutsDialog('4')">
+      AdvancedCare Payouts
+    </button>
+    <div style="padding: 16px"> </div>
+    <mat-divider></mat-divider>
+  </div>
+
+
+</div>

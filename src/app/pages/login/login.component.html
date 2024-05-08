@@ -1,0 +1,57 @@
+<div class="body">
+    <div class="login">
+    <mat-card>
+        <form [formGroup]="loginFormData">
+          
+        <img src="assets/logo/logo.png" />
+    
+                <h2 class="text-center text-danger">Login</h2>
+                <mat-card-content fxLayout="column" fxLayoutAlign="space-around center"> 
+          
+            
+                    <mat-form-field appearance="outline">
+                      <mat-label>User email</mat-label>
+                      <input
+                        matInput
+                        placeholder="Email"
+                        autocomplete="off"
+                        formControlName="email"
+                        required
+                      />
+                
+                    </mat-form-field>
+                   
+             
+
+           
+                    <mat-form-field appearance="outline">
+                      <mat-label>Password</mat-label>
+                      <input
+                        matInput
+                        type="password"
+                        placeholder="Password"
+                        autocomplete="off"
+                        formControlName="password"
+                        required
+                      />
+                     
+                    </mat-form-field>
+                    <!-- <div class="error" *ngIf="f.password.touched && f.password.errors">
+                      Please enter valid password
+                    </div> -->
+                  
+                  
+                </mat-card-content>
+      
+                
+                  <button  mat-raised-button color="default" (click)="onLogin()"
+                  [disabled]="this.loginFormData.invalid"
+                >Login</button>
+               
+        </form>
+       
+    </mat-card>
+ 
+    </div>
+</div>
+

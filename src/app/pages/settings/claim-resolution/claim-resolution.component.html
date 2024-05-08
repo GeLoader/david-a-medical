@@ -1,0 +1,57 @@
+<app-menu></app-menu>
+<div class="container">
+    <h1>
+        Claim Resolution & Colors
+    </h1>
+ 
+
+    <div class="mat-elevation-z8" >
+        <table mat-table [dataSource]="dataSource" matSort >
+            <ng-container matColumnDef="edit"  style="white-space: nowrap;" >
+                <th mat-header-cell *matHeaderCellDef   >Edit</th>
+                <td mat-cell *matCellDef="let element" style="overflow: hidden; text-overflow: ellipsis;" >
+                  <mat-icon style="color: rgb(53 111 153)"  >edit</mat-icon>
+                </td>
+              </ng-container>
+ 
+                <ng-container matColumnDef="delete">
+                  <th mat-header-cell *matHeaderCellDef>Delete</th>
+                  <td mat-cell *matCellDef="let element">
+                    <mat-icon style="color: #c31c1c"  >delete</mat-icon>
+                  </td>
+                </ng-container>
+ 
+
+            <!-- <ng-container matColumnDef="closed_id" style="display:none">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="display:none"></th>
+                <td mat-cell *matCellDef="let element" style="display:none">
+                    {{ element.partner_id }}
+                </td>
+            </ng-container> -->
+
+            <ng-container matColumnDef="closed flag" >
+                <th mat-header-cell *matHeaderCellDef   >Closed Flag</th>
+                <td mat-cell *matCellDef="let element" >
+                    {{ element['closed flag'] }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="color">
+                <th mat-header-cell *matHeaderCellDef  >Color</th>
+                <td mat-cell *matCellDef="let element" >
+                    {{ element.color }}
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngStyle]="{ 'background-color': '#' + row.color }">
+                   
+              </tr>
+            </table>
+
+        <mat-paginator [pageSizeOptions]="[20, 40, 50, 100, 500]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+
+</div>

@@ -1,0 +1,234 @@
+
+
+<mat-icon (click)="closeDialog()" style="cursor: pointer; color: #8d8f8f;float: right;">cancel</mat-icon>
+
+
+<div>
+
+   
+    <form [formGroup]="formData">
+        <mat-form-field appearance="outline" style="width: 250px;font-size:12px">
+            <mat-label>Report Name:</mat-label>
+            <input matInput name="inputreport" type="text" formControlName="report_name" />
+        </mat-form-field>
+        <mat-dialog-content class="mat-typography" style="height: 70%;">
+        <div fxLayout="row" fxLayoutAlign="space-around start">
+            <div fxLayout="column" fxLayoutAlign="space-around start">
+     
+                    <div >
+                        <span  >Date Grouping:</span>
+                        <div class="divheight" style="height: 10rem"> 
+                        <mat-label>Which date column to group the report: </mat-label>
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="columndategroup">
+                                <mat-option *ngFor="let val of list_columndategroup" [value]="val">
+                                    {{ val }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                       
+                        
+                        <mat-selection-list #allcolumndateperiod multiple  formControlName="columndate_period" >
+                            <mat-label>Group the above date by:</mat-label>
+                            <mat-list-option *ngFor="let val of list_columndateperiod" [value]="val">
+                                {{ val }}
+                            </mat-list-option>
+                        </mat-selection-list>
+      
+                    
+                    </div>
+                    </div>
+
+                    <div>
+                       
+                    </div>
+ 
+            </div>
+            <div>
+                <span  >Database Columns:</span>
+                <div class="divheight">
+                    <mat-card-content class="supplier-group">
+                        <mat-checkbox >Select All</mat-checkbox>
+                        <mat-selection-list #alldatabasecolumn formControlName="database_col" multiple>
+                            <mat-list-option *ngFor="let val of list_databasecolumn" [value]="val">
+                                {{ val }}
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </mat-card-content>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-around start">
+            <div  >
+                <button class="btn btn-success" style="width:100px" (click)="addSelectedColumn()">
+                    Add Selected Column
+                </button>
+
+            </div>
+            </div>
+            <mat-card>
+                <span  >Report Columns:</span>
+                <div class="divheight">
+                    <mat-selection-list #allReportColumn multiple formControlName="report_col">
+                        <mat-list-option *ngFor="let val of listReportColumn" [value]="val">
+                            {{ val }}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+            </mat-card>
+
+
+            <div fxLayout="column" fxLayoutAlign="space-around start">
+                <div >
+                    <button class="btn btn-success" style="width:130px" (click)="moveUpSelectedColumn()">
+                        Move Up Selected Column
+                    </button>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <button class="btn btn-success" style="width:130px" (click)="moveDownSelectedColumn()">
+                        Move Down Selected Column
+                    </button>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <button class="btn btn-success" style="width:130px" (click)="removeSelectedColumn()">
+                        Remove Selected Column
+                    </button>
+                </div>
+
+           
+            </div>
+
+        </div>
+        <mat-divider style="padding: 5px 5px 5px 5px"></mat-divider>
+        <!-- ////''''SECOND ROW -->
+        <div fxLayout="row" fxLayoutAlign="space-around start">
+            <div fxLayout="column" fxLayoutAlign="space-around start">
+
+                <div>
+                    <span >PT Types:</span>
+                    <div class="divheight" style="height: 10rem">
+                        <mat-selection-list   formControlName="pt_type_val">
+                            <mat-checkbox [checked]="true">Select All</mat-checkbox>
+                            <mat-list-option *ngFor="let val of listPT_type" [value]="val">
+                                {{ val }}
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </div>
+
+                </div>
+
+                <div>
+                    <span >Software:</span>
+                    <div class="divheight" style="height: 10rem">
+                        <mat-selection-list #allPTType  formControlName="software">
+                            <mat-checkbox [checked]="true">Select All</mat-checkbox>
+                            <mat-list-option *ngFor="let val of list_software" [value]="val">
+                                {{ val }}
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </div>
+                </div>
+                <div>
+ 
+                        <mat-radio-group aria-label="Select an option" formControlName="option_button">
+                            <mat-radio-button value="OpPt" style="margin-right: 1rem;display:block" >PT Data</mat-radio-button>
+                            <mat-radio-button value="OpPmt" style="display:block" >Payment Data</mat-radio-button>
+                            <mat-radio-button value="Y" style="margin-right: 1rem;display:block" >Both Pt & Payment</mat-radio-button>
+                        </mat-radio-group>
+    
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-around start">
+            <div>
+                <mat-form-field appearance="outline" style="width: 250px;font-size:12px">
+                    <mat-label>HCPCS</mat-label>
+                    <input matInput name="inputreport" type="text" formControlName="hcpcs" />
+                </mat-form-field>
+            </div>
+             
+                <div>
+                    <div class="divheight">
+                    <mat-selection-list #val   formControlName="hcpcs_col">
+                        <mat-checkbox [checked]="true">Select All</mat-checkbox>
+                        <mat-list-option *ngFor="let val of list_hcpcscode" [value]="val">
+                            {{ val }}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div> 
+                </div>
+           
+                <div>
+                    <mat-form-field appearance="fill" style="width: 11rem; margin-right: 1rem">
+                        <mat-label>Start Date:</mat-label>
+                        <input matInput [matDatepicker]="picker1" formControlName="start_date" (dateChange)="startDateChange()" />
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+
+                   
+                </div>
+    
+                <div>
+                    <mat-form-field appearance="fill" style="width: 11rem; margin-right: 1rem">
+                        <mat-label>End Date:</mat-label>
+                        <input matInput [matDatepicker]="picker2" formControlName="end_date"/>
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <span >Filter Date:</span>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="filter_date">
+                            <mat-option *ngFor="let val of list_columndategroup" [value]="val">
+                                {{ val }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </div>
+ 
+            <div style="border-color: black;">
+                <span>Insurance:</span>
+                <div class="divheight">
+                <mat-selection-list #val   formControlName="insurance">
+                    <mat-checkbox [checked]="true">Select All</mat-checkbox>
+                    <mat-list-option *ngFor="let val of list_insurance" [value]="val">
+                        {{ val }}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div> 
+            </div>
+
+            <div style="border-color: black;">
+                <span>Stage:</span>
+                <div class="divheight">
+                <mat-selection-list #val   formControlName="stage">
+                    <mat-checkbox [checked]="true">Select All</mat-checkbox>
+                    <mat-list-option *ngFor="let val of list_paymentstatus" [value]="val">
+                        {{ val }}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div> 
+            </div>
+
+
+        </div>
+ 
+    </mat-dialog-content>
+    </form>
+
+</div>
+
+
+<mat-dialog-actions align="end">
+    <button class="btn btn-success" style="margin-left:0.5rem;width:120px;height: 50px;" (click)="onSubmit()">
+        Save!
+    </button>
+
+</mat-dialog-actions>
+

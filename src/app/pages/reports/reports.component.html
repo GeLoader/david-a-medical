@@ -1,0 +1,45 @@
+
+<div fxLayout="column" fxLayoutAlign="space-around start">
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+   <div class="container">
+    <form [formGroup]="formData">
+      <span class="header">Select Report:</span>
+   
+          <div class="listReports">
+              <mat-selection-list #val [multiple]="false" formControlName="report_val">
+                <mat-list-option  *ngFor="let val of listReports" [value]="val"  >
+               {{ val }}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+    </form>
+  </div>
+ 
+  <!-- Container 2 with vertical buttons -->
+  <div class="container" style="border:none">
+    <div class="vertical-buttons" style="width: 250px;">
+          <button class="btn btn-success" style="color:black;background-color: #05f7ff;" (click)="newReport()" fxFlex >Add New Report</button>
+          <button class="btn btn-success" style="color:black;background-color: #05f7ff;" fxFlex >Edit Selected Report</button>
+          <button class="btn btn-success" style="color:black;background-color: #05f7ff;" (click)="deleteReport()"   fxFlex >Delete Selected Report</button>
+      </div>
+  </div>
+  
+  <!-- Container 3 with vertical buttons -->
+  <div class="container"  style="border:none">
+    <div class="vertical-buttons" style="width: 100px;">
+          <button class="btn btn-success" style="color:white;background-color: #272726;" (click)= "unpaidAging()" fxFlex >Unpaid Aging Report</button>
+          <button class="btn btn-success" style="color:white;background-color: #272726;" (click)="superiorReport()" fxFlex >Superior Payouts Report</button>
+          <button class="btn btn-success" style="color:white;background-color: #272726;" (click)= "deniedItems()" fxFlex >Denied Items</button>
+  
+      </div>
+  </div>
+
+    </div>
+
+    
+  <div class="container" style="border:none">
+    <div class="vertical-buttons" style="margin-left:200px;width:200px"> 
+    <button mat-raised-button style="color:white;background-color: #272726;" (click)="runReport()"   >Run!</button>
+    </div>
+    </div>
+  </div>

@@ -1,0 +1,70 @@
+ 
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+ 
+
+/* Set background color */
+.body {
+  background-color: #f52679;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Login container styles */
+.login {
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+ 
+  border-radius: 10px;
+  
+}
+
+/* Logo styles */
+.login img {
+  width: 150px; /* Increase the width */
+  height: auto;
+  display: block;
+  margin: 0 auto 20px; /* Center the image */
+  border-radius: 50%; /* Apply rounded corners to the image */
+  border: 3px solid #f23f69; /* Add a border around the image */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the image */
+}
+/* Form styles */
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+
+/* Button styles */
+.login button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #f23f69;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login button:hover {
+  background-color: #d81e51;
+}
+
+

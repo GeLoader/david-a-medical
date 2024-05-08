@@ -1,0 +1,45 @@
+<mat-icon style="cursor: pointer; color: #767e7b;float: right;margin-bottom: 1rem;"
+  (click)="closeDialog()">cancel</mat-icon>
+
+<div class="container">
+  <input type="file" class="file-upload" (change)="onFileSelected($event)">
+  <div class="col action-wrapper">
+
+    <!-- <button class="btn btn-warning" (click)="openunpaidsuperrior()">Unpaid Superior</button>
+        <button class="btn btn-warning" (click)="opensuperior()">Superior Payouts</button> -->
+
+
+    <button mat-raised-button (click)="openInsurancePayments('1')">
+      Upload Payment File 
+    </button>
+
+    <button mat-raised-button (click)="openInsurancePayments('2')">
+      View all payments
+    </button>
+
+    <div style="padding: 16px"> </div>
+      <mat-divider></mat-divider>
+   
+ 
+
+    <button mat-raised-button (click)="openInsurancePayments('3')">
+      Convert EDI File to Excel
+    </button>
+
+    <button mat-raised-button (click)="openInsurancePayments('4')">
+      Average Payments for Item
+    </button>
+    <div style="padding: 16px"> </div>
+    <mat-divider></mat-divider>
+  </div>
+
+
+</div>
+
+
+<!-- app.component.html -->
+
+ 
+<input type="file" (change)="handleFileInput($event)">
+
+

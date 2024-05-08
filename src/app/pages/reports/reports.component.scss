@@ -1,0 +1,63 @@
+mat-grid-tile {
+    background: lightblue;
+  }
+  .container {
+    border: 1px solid #ccc;
+    padding: 10px;
+     
+    position: relative;
+  }
+  
+  .vertical-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .example-container {
+    width: 400px;
+    height: 200px;
+    margin: 10px;
+    border: 1px solid #F5B7B1;
+  }
+  
+  .header {
+      font-size: 12px;
+      font-weight: 500;
+      background-color: #F5B7B1;
+    }
+    
+    .divheight {
+      height: 12rem;
+      width: 17rem;
+      overflow: auto;
+      border: 1px solid #F5B7B1;
+    }
+  
+  .divheight2 {
+      padding: 0.3rem;
+      height: 12rem;
+      width: 13rem;
+      overflow: hidden;
+      border: 1px solid #F5B7B1;
+    }
+    
+  .listReports{
+      position: relative;
+      height: 10rem;
+      overflow-y: scroll;
+      width: 250px;
+    }
+  
+    .mat-list-base .mat-list-item,
+  .mat-list-base .mat-list-option {
+    height: 21px !important;
+  }
+  
+  .mat-list-base {
+    padding-top: none !important;
+  }
+  
+  .mat-list-option {
+    font-size: 11px;
+    font-weight: 500;
+  }

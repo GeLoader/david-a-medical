@@ -1,0 +1,55 @@
+<nav ngxNavbarDynamicExpand class="navbar-light">
+    <div class="container-fluid">
+      <a href="./home">
+        <img src="assets/logo/logo.png" />
+       </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        (click)="collapse.toggle()"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span
+          class="
+            navbar-toggler-icon
+            d-flex
+            align-items-center
+            justify-content-center
+          "
+        >
+        </span>
+      </button>
+      <ngx-navbar-collapse id="main-nav" #collapse="ngxNavbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <!-- <li class="nav-item" [ngClass]="{active: menu.menuLink === itemroute}" (click)="routeChange(itemroute)">
+         Items
+          </li> -->
+          <li class="nav-item" [ngClass]="{active: menu.menuLink === itemroute}" (click)="openItemsDialog()">
+            Items
+             </li>
+          <li class="nav-item" [ngClass]="{active: menu.menuLink === reportroute}" (click)="openReportsDialog()">
+            Reports 
+          </li>
+          <li class="nav-item" [ngClass]="{active: menu.menuLink === ptmasterroute}" (click)="openPTDialog()">
+            PT Master
+          </li>
+          <li class="nav-item" [ngClass]="{active: menu.menuLink === insurancepaymentsroute}" (click)="openInsurancePayments()">
+       Insurance Payments
+          </li>
+          <li class="nav-item" [ngClass]="{active: menu.menuLink === partnerpayoutsroute}" (click)="openPayoutsDialog()">
+         Partner Pay-outs
+          </li>
+          <!-- <li class="nav-item" [ngClass]="{active: menu.menuLink === settingsroute}" (click)="routeChange(settingsroute)">
+     Settings
+          </li> -->
+          <li class="nav-item" [ngClass]="{active: menu.menuLink === settingsroute}" (click)="openSettingsDialog()">
+            Settings
+                 </li>
+
+        </ul>
+      </ngx-navbar-collapse>
+    </div>
+  </nav>
+  

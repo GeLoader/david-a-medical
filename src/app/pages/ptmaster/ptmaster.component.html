@@ -1,0 +1,83 @@
+
+
+<div fxLayout="column" fxLayoutAlign="space-around start">
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+ <div class="container">
+  <form [formGroup]="formData">
+    <span class="header">Select PT View:</span>
+ 
+        <div class="listReports">
+            <mat-selection-list #val [multiple]="false" formControlName="report_val">
+              <mat-list-option  *ngFor="let val of listReports" [value]="val"  >
+             {{ val }}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+  </form>
+         
+</div>
+
+<!-- Container 2 with vertical buttons -->
+<div class="container" style="border:none">
+    <div class="vertical-buttons" style="width: 250px;">
+        <button class="btn btn-success" style="font-size:13px;color:black;background-color: #f092a8;" (click)="NewPTReport()" fxFlex >Add New PT View</button>
+        <button class="btn btn-success" style="font-size:13px;color:black;background-color: #f092a8;" (click)="editReport()" fxFlex >Edit Selected PT View</button>
+        <button class="btn btn-success" style="font-size:13px;color:black;background-color: #f092a8;" (click)="deleteReport()"  fxFlex >Delete Selected PT View</button>
+    </div>
+</div>
+
+<!-- Container 3 with vertical buttons -->
+<div class="container"  style="border:none">
+    <div class="vertical-buttons" style="width: 70px;">
+        <button class="btn btn-success"  style="font-size:13px;color:black;background-color: #93FDB7;" fxFlex >Upload Streak Files</button>
+        <button class="btn btn-success" style="font-size:13px;color:black;background-color: #e7762b;" fxFlex >View Deleted Record</button>
+
+    </div>
+</div>
+  </div>
+  
+  <div class="container" style="border:none">
+    <div class="vertical-buttons" style="margin-left:200px;width:200px"> 
+    <button mat-raised-button style="color:white;background-color: #272726;" (click)="runReport()"   >Run!</button>
+    </div>
+    </div>
+ 
+</div>
+
+ <!-- <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened> 
+        <span class="header">Select PT View:</span>
+ 
+        <div class="listReports">
+            <mat-selection-list *ngFor="let val of listReports" [multiple]="false" >
+              <mat-list-option   >
+             {{ val.report_name }}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+
+    </mat-drawer>
+
+    <mat-drawer mode="side" opened> 
+        <button class="btn btn-success" fxFlex >Add New PT View</button>
+        <button class="btn btn-success" fxFlex >Edit Selected PT View</button>
+        <button class="btn btn-success" fxFlex >Delete Selected PT View</button>
+    </mat-drawer>
+    <mat-drawer mode="side" opened> 
+        <button class="btn btn-success" fxFlex >Upload Streak Files</button>
+        <button class="btn btn-success" fxFlex >View Deleted Record</button>
+
+
+
+    </mat-drawer>
+
+  </mat-drawer-container>
+
+ 
+ 
+    <button class="btn btn-success" fxFlex >RUN</button>
+  -->
+
+ 
+
+

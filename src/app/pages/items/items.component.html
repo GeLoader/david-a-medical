@@ -1,0 +1,28 @@
+<mat-icon style="cursor: pointer; color: #767e7b;float: right;margin-bottom: 1rem;" (click)="closeDialog()">cancel</mat-icon>
+<!-- <div class="container">
+    <div class="col action-wrapper">
+        <button class="btn btn-warning" (click)="openHCPS()">UPDATE HCPS MASTER</button>
+        <button class="btn btn-warning" (click)="openUpdateItems()">UPDATE ITEM MASTER</button>
+        <button class="btn btn-warning" (click)="openMapping()">MAPPING ITEM TO ITEM MASTER</button>
+    </div>
+    <router-outlet></router-outlet>
+
+</div> -->
+
+<div class="container">
+
+    <button mat-raised-button  (click)="openItems('1')" >
+        UPDATE HCPS MASTER
+      </button>
+
+      <button mat-raised-button  (click)="openItems('2')"  >
+        UPDATE ITEM MASTER
+      </button>
+
+      <button mat-raised-button (click)="openItems('3')">
+        MAPPING ITEM TO ITEM MASTER
+      </button>
+ 
+</div>
+
+

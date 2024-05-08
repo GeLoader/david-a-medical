@@ -1,0 +1,99 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <p></p>
+     <mat-icon (click)="closeDialog()"  style="cursor: pointer; color: #8d8f8f"
+       >cancel</mat-icon>
+    
+   </div>
+   <div>
+     <form [formGroup]="formData"> 
+   
+       <div fxLayout="row" fxLayoutAlign="space-around start">
+         <mat-card>
+           <mat-label style="color:red;font-weight: 500;">Database Columns:</mat-label>
+           <div   style="border-color: black;">
+             <mat-selection-list
+               #val
+               [multiple]="false"
+              
+               formControlName="database_col"
+             >
+               <mat-list-option  *ngFor="let val of listColumnName" [value]="val">
+                 {{ val }}
+               </mat-list-option>
+             </mat-selection-list>
+           </div>
+         </mat-card>
+         <mat-card style="background: white;">
+           <button class="btn btn-success"  style="width:70px" (click)="addSelectedColumn()"  >
+             Add Selected Column
+           </button>
+    
+         </mat-card>
+   
+         <mat-card >
+           <mat-label style="color:red;font-weight: 500;">Report Columns:</mat-label>
+           <div>
+             <mat-selection-list
+               #val
+               [multiple]="false"
+               
+               formControlName="report_col"
+             >
+               <mat-list-option *ngFor="let val of listReportColumn" [value]="val">
+                {{ val }}
+               </mat-list-option>
+             </mat-selection-list>
+           </div>
+         </mat-card>
+   
+         
+         <mat-card >
+           <div fxLayout="row" fxLayoutAlign="space-between center">
+           <button class="btn btn-success"  style="width:70px" (click)="moveUpSelectedColumn()" >
+             Move Up Selected Column
+           </button>
+         </div>
+   
+         <div fxLayout="row" fxLayoutAlign="space-between center">
+           <button class="btn btn-success"   style="width:70px" (click)="moveDownSelectedColumn()" >
+             Move Down Selected Column
+           </button>
+         </div>
+   
+         <div fxLayout="row" fxLayoutAlign="space-between center">
+           <button class="btn btn-success"  style="width:70px" (click)="removeSelectedColumn()">
+             Remove Selected Column
+           </button>
+         </div>
+           <div style="margin-top: 1rem;">
+           <mat-label style="color:red;font-weight: 500;">PT Types:</mat-label>
+           <div>
+             <mat-selection-list #allPTType  multiple formControlName="pt_type_val">
+               <mat-list-option  *ngFor="let val of listPT_type"  [value]="val">
+                {{ val }}
+               </mat-list-option>
+             </mat-selection-list>
+           </div>
+   
+         </div>
+         </mat-card>
+    
+   
+       </div>
+    
+       <mat-label>View Name:</mat-label>
+       <mat-form-field appearance="outline" style="width: 250px;font-size:12px">
+        
+         <input matInput name="inputreport" type="text" formControlName="pt_name" />
+       </mat-form-field>
+   
+       <button class="btn btn-success"  style="margin-left:0.5rem;width:120px;height: 50px;" (click)="onSubmit()" >
+         Save!
+       </button>
+    
+     </form>
+     <div fxLayout="column" fxLayoutAlign="space-around start">
+     
+     
+     </div>
+   </div>

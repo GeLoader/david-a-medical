@@ -1,0 +1,118 @@
+<div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <p></p>
+    <mat-icon (click)="closeDialog()" style="cursor: pointer; color: #8d8f8f">cancel</mat-icon>
+
+</div>
+
+
+<div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+
+        <div style="margin-bottom: 1rem">
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="Y" style="margin-right: 1rem">Include only unpaid to
+                    superior.</mat-radio-button>
+                <mat-radio-button value="No">Include all records.</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </div>
+
+    <div style="border: solid 1px gray;">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <h3>Lookup By Date:</h3>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around start">
+
+
+
+            <div>
+                <mat-form-field appearance="legacy">
+                    <mat-select #supplyinput>
+                        <mat-option [value]="">
+
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+            <div>
+                <mat-form-field appearance="fill" style="width: 11rem; margin-right: 1rem">
+                    <mat-label>Begin Date:</mat-label>
+                    <input matInput [matDatepicker]="picker" />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="fill" style="width: 11rem; margin-right: 1rem">
+                    <mat-label>End Date:</mat-label>
+                    <input matInput [matDatepicker]="picker" />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+
+        <div fxLayout="column" fxLayoutAlign="space-between start" >
+            <div style="border: solid 1px gray;padding: 10px 10px" >
+                <h3>Lookup By Date:</h3>
+
+                <p>LookUp Transactions where name is like:</p>
+                <mat-form-field appearance="fill">
+
+                    <input #fo matInput autocomplete="off" />
+                </mat-form-field>
+
+            </div>
+
+            <div style="border: solid 1px gray;padding: 10px 10px">
+
+                <h3>Lookup By Transaction:</h3>
+
+
+                <button mat-raised-button>LookUp By SO#</button>
+                <button mat-raised-button>LookUp By Bill#</button>
+                <button mat-raised-button>LookUp By Row#</button>
+            </div>
+
+            <div style="border: solid 1px gray;padding: 10px 10px">
+                <button mat-raised-button>Show Detailed Report!</button>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Amount:</mat-label>
+                    <input #fo matInput autocomplete="off" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="margin-left: 0.5rem;">
+            <div style="margin: 0.5rem 0rem;">
+                <div class="heading"> </div>
+                <mat-card style="height: 16.8rem; width: 13rem; overflow: auto;">
+                    <mat-card-content>
+                        <!-- <mat-checkbox   [checked]="true">Select All Items</mat-checkbox> -->
+                        <mat-label>Result name:</mat-label>
+                        <mat-selection-list #itemsType multiple="false">
+                            <mat-list-option>
+
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</div>

@@ -1,0 +1,74 @@
+.divheight {
+    height: 12rem;
+    width: 17rem;
+    overflow: auto;
+    border: 1px solid lightgrey;
+  }
+  
+  .divheight2 {
+    padding: 0.3rem;
+    height: 12rem;
+    width: 13rem;
+    overflow: hidden;
+    border: 1px solid lightgrey;
+  }
+  
+  .supplyType{
+    position: relative;
+    height: 3rem;
+    overflow-y: scroll;
+  }
+  
+  .header {
+    font-size: 11px;
+    font-weight: 500;
+  }
+  
+  .mat-list-base .mat-list-item,
+  .mat-list-base .mat-list-option {
+    height: 21px !important;
+  }
+  
+  .mat-list-base {
+    padding-top: none !important;
+  }
+  
+  .mat-list-option {
+    font-size: 11px;
+    font-weight: 500;
+  }
+  
+  h3 {
+    font-size: 12px;
+    color: red;
+    font-weight: 500;
+    margin-bottom: 0px !important;
+  }
+  
+  .mat-radio-button {
+    font-weight: 500 !important;
+    font-size: 11px !important;
+  }
+  
+  .mat-form-field {
+    font-size: 11.5px;
+  }
+  
+  .required:after {
+    content: " *";
+    color: red;
+  }
+
+  button {
+    font-size: 12px;
+  }
+
+  mat-checkbox {
+    margin-left: 5px;
+  }
+//   .mat-card{
+//     height: 26.8rem;
+//     width:13rem;
+//     overflow: auto;
+//     background: #eef2f4 !important;
+// }

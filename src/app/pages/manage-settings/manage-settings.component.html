@@ -1,0 +1,29 @@
+<mat-icon style="cursor: pointer; color: #767e7b;float: right;margin-bottom: 1rem;" (click)="closeDialog()">cancel</mat-icon>
+<div class="container">
+
+    <button mat-raised-button  (click)="openSettings('1')" >
+        Item-Partner Settings
+      </button>
+
+      <button mat-raised-button  (click)="openSettings('2')"  >
+        Claim Resolution & Colors
+      </button>
+
+      <button mat-raised-button (click)="openSettings('3')">
+        Column Width
+      </button>
+
+      <button mat-raised-button (click)="openSettings('4')">
+        Insurance Company Settings
+      </button>
+
+      <button mat-raised-button (click)="openSettings('5')">
+        Manage Users
+      </button>
+
+      <div class="modal-footer">
+      <button mat-raised-button  (click)="logout()" style="margin-top: 2rem;">
+        Logout
+      </button>
+      </div>
+</div>

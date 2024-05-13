@@ -2,35 +2,33 @@
   (click)="closeDialog()">cancel</mat-icon>
 
 <div class="container">
-  <input type="file" class="file-upload" (change)="onFileSelected($event)">
   <div class="col action-wrapper">
 
     <!-- <button class="btn btn-warning" (click)="openunpaidsuperrior()">Unpaid Superior</button>
         <button class="btn btn-warning" (click)="opensuperior()">Superior Payouts</button> -->
 
 
-    <button mat-raised-button (click)="openInsurancePayments('1')">
-      Upload Payment File 
-    </button>
+        <label  class="btn btn-success" (click)="openInsurancePayments('1')">
+      Upload Payment File &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </label>
 
-    <button mat-raised-button (click)="openInsurancePayments('2')">
-      View all payments
-    </button>
+    <label style="margin-left:1rem" class="btn btn-success" (click)="openInsurancePayments('2')">
+      View all payments &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </label>
 
     <div style="padding: 16px"> </div>
       <mat-divider></mat-divider>
-   
+      <div style="padding: 16px"> </div>
  
+      <label class="btn btn-success">
+Convert EDI File to Excel
+<input id="fileInput" type="file" (change)="handleFileInput($event)" hidden>
+</label>
 
-    <button mat-raised-button (click)="openInsurancePayments('3')">
-      Convert EDI File to Excel
-    </button>
-
-    <button mat-raised-button (click)="openInsurancePayments('4')">
+    <label style="margin-left:1rem" class="btn btn-success" (click)="openInsurancePayments('4')">
       Average Payments for Item
-    </button>
-    <div style="padding: 16px"> </div>
-    <mat-divider></mat-divider>
+    </label>
+ 
   </div>
 
 
@@ -40,6 +38,6 @@
 <!-- app.component.html -->
 
  
-<input type="file" (change)="handleFileInput($event)">
+<!-- <input type="file" (change)="handleFileInput($event)"> -->
 
 

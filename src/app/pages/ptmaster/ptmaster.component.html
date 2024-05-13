@@ -29,7 +29,20 @@
 <!-- Container 3 with vertical buttons -->
 <div class="container"  style="border:none">
     <div class="vertical-buttons" style="width: 70px;">
-        <button class="btn btn-success"  style="font-size:13px;color:black;background-color: #93FDB7;" fxFlex >Upload Streak Files</button>
+      <!-- <input type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls"> -->
+
+      <label class="btn btn-success">
+        Upload Streak Files
+        <input type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls" hidden>
+        </label>
+
+      <!-- <label class="btn btn-success">
+        Upload Streak Files
+        <input id="fileInput" (change)="handleFileInput($event)" type="file" hidden>
+        </label> -->
+
+        <!-- <button class="btn btn-success"  style="font-size:13px;color:black;background-color: #93FDB7;" fxFlex >
+          Upload Streak Files</button> -->
         <button class="btn btn-success" style="font-size:13px;color:black;background-color: #e7762b;" fxFlex >View Deleted Record</button>
 
     </div>

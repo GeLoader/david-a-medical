@@ -212,7 +212,7 @@ export class PtmasterComponent implements OnInit {
   streakFileCol: any = [];
   allstreakFileCol: any = [];
   //lc: any = '500';
-
+  newItemColumn: any = [];
   streak_file(worksheet: any) {
 
     let jsonData: any[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
@@ -240,21 +240,28 @@ export class PtmasterComponent implements OnInit {
         c--;
       }
     }
-
+    let streakColAdd: any[] = [];
     this.ptService.getColumnsStreak().subscribe(
       (res: any) => {
 
         this.allcolStreak = res.data;
         this.colStreak = [...new Set(res.data.map((x: any) => String(x.name).toUpperCase()))];
-
+        const values = [];
         for (let c = 0; c < jsonData[0].length; c++) {
           let columnToAdd = jsonData[0][c];
-          
-          this.ptService.alter_tbl_streak_col_add(columnToAdd).subscribe(
-            (res: any) => {
-  
-            }
-          );
+
+          if (columnToAdd !== undefined) {
+            streakColAdd.push(columnToAdd);
+        }
+        console.log(streakColAdd);
+            // this.ptService.alter_tbl_streak_col_add(streakColAdd).subscribe(
+            //   (res: any) => {
+    
+            //   }
+            // );
+        
+
+   
           // this.allstreakFileCol = jsonData[0][c].toUpperCase();
           // this.streakFileCol = [...new Set(this.allstreakFileCol.map((x: any) => String(x).toUpperCase()))];
           //  console.log(jsonData[0][c]);
@@ -268,8 +275,47 @@ export class PtmasterComponent implements OnInit {
         }
    
     
-        const newItemColumn = this.streakFileCol.filter((column: any) => !this.colStreak.includes(column));
-        
+        //this.newItemColumn = this.streakFileCol.filter((column: any) => !this.colStreak.includes(column));
+
+        if (this.streakFileCol) {
+          this.newItemColumn = this.streakFileCol.filter((column: any) => !this.colStreak.includes(column));
+      } else {
+        this.newItemColumn = '';
+      }
+
+      console.log(this.newItemColumn);
+        // if (rpr.length > 0) {
+        //   const confirm = await Swal.fire({
+        //     title: 'Are you sure you want to delete "' + rpr + '" report?',
+        //     text: "",
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Yes',
+        //     cancelButtonText: 'No'
+        //   })
+        //   if (confirm.isConfirmed) {
+    
+        //     this.ptService.deletReportName(rpr).subscribe(
+        //       (res: any) => {
+        //         if (res.status) {
+        //           this.alertService.onSuccess();
+        //           this.getListReports();
+        //         } else {
+        //           this.alertService.onError(res.message);
+        //         }
+        //         this.spinner.hide();
+    
+        //       },
+        //       (error: any) => {
+        //         this.spinner.hide();
+        //         this.alertService.onError(error.message);
+        //       }
+        //     );
+    
+        //   }
+        // }
         // if(newItemColumn ) {
         //   this.ptService.insert_tbl_item_column({ colADD: newItemColumn[0] }).subscribe(
         //     (res: any) => {
@@ -279,7 +325,7 @@ export class PtmasterComponent implements OnInit {
  
         // }
      
-        console.log(newItemColumn[0]);
+      
       }
     );
 
